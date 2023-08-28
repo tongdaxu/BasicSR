@@ -5,9 +5,9 @@ import os
 import shutil
 import torch
 
-from basicsr.archs.basicvsrpp_arch import BasicVSRPlusPlus
-from basicsr.data.data_util import read_img_seq
-from basicsr.utils.img_util import tensor2img
+from archs.basicvsrpp_arch import BasicVSRPlusPlus
+from data.data_util import read_img_seq
+from utils.img_util import tensor2img
 
 
 def inference(imgs, imgnames, model, save_path):

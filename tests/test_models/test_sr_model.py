@@ -2,10 +2,10 @@ import tempfile
 import torch
 import yaml
 
-from basicsr.archs.srresnet_arch import MSRResNet
-from basicsr.data.paired_image_dataset import PairedImageDataset
-from basicsr.losses.basic_loss import L1Loss, PerceptualLoss
-from basicsr.models.sr_model import SRModel
+from archs.srresnet_arch import MSRResNet
+from data.paired_image_dataset import PairedImageDataset
+from losses.basic_loss import L1Loss, PerceptualLoss
+from models.sr_model import SRModel
 
 
 def test_srmodel():

@@ -3,10 +3,10 @@ from torchvision.transforms.functional import normalize
 
 import os
 import pickle
-from basicsr.data.data_util import paired_paths_from_folder, paired_paths_from_lmdb, paired_paths_from_meta_info_file
-from basicsr.data.transforms import augment, paired_random_crop
-from basicsr.utils import FileClient, bgr2ycbcr, imfrombytes, img2tensor
-from basicsr.utils.registry import DATASET_REGISTRY
+from data.data_util import paired_paths_from_folder, paired_paths_from_lmdb, paired_paths_from_meta_info_file
+from data.transforms import augment, paired_random_crop
+from utils import FileClient, bgr2ycbcr, imfrombytes, img2tensor
+from utils.registry import DATASET_REGISTRY
 
 
 @DATASET_REGISTRY.register()
@@ -74,11 +74,8 @@ class PairedImageDataset(data.Dataset):
         return images
 
     def __getitem__(self, index):
-        if self.file_client is None:
-            self.file_client = FileClient(self.io_backend_opt.pop('type'), **self.io_backend_opt)
 
         scale = self.opt['scale']
-
         if self.io_backend_opt['type'] == 'pickle':
             gt_path = str(index)
             img_gt = self.hr_images[index]
@@ -87,6 +84,8 @@ class PairedImageDataset(data.Dataset):
         else:
         # Load gt and lq images. Dimension order: HWC; channel order: BGR;
         # image range: [0, 1], float32.
+            if self.file_client is None:
+                self.file_client = FileClient(self.io_backend_opt.pop('type'), **self.io_backend_opt)
             gt_path = self.paths[index]['gt_path']
             img_bytes = self.file_client.get(gt_path, 'gt')
             img_gt = imfrombytes(img_bytes, float32=True)

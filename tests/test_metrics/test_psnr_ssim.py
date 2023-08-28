@@ -1,7 +1,7 @@
 import numpy as np
 import pytest
 
-from basicsr.metrics.psnr_ssim import calculate_psnr, calculate_ssim
+from metrics.psnr_ssim import calculate_psnr, calculate_ssim
 
 
 def test_calculate_psnr():

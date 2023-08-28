@@ -1,6 +1,6 @@
 import torch
 
-from basicsr.archs.srresnet_arch import MSRResNet
+from archs.srresnet_arch import MSRResNet
 
 
 def test_msrresnet():

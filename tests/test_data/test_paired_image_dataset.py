@@ -1,6 +1,6 @@
 import yaml
 
-from basicsr.data.paired_image_dataset import PairedImageDataset
+from data.paired_image_dataset import PairedImageDataset
 
 
 def test_pairedimagedataset():

@@ -1,7 +1,7 @@
 import cv2
 import warnings
 
-from basicsr.metrics import calculate_niqe
+from metrics import calculate_niqe
 
 
 def main():
